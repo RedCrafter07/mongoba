@@ -8,8 +8,7 @@
 		"dev:d": "tsx bin/decrypt.ts",
 		"dev:r": "tsx bin/restore.ts",
 		"dev:p": "tsx bin/purge.ts",
-		"build": "tsc",
-		"publish": "npm publish"
+		"build": "tsc"
 	},
 	"keywords": [],
 	"author": "RedCrafter07",
