@@ -108,8 +108,6 @@ const { prompt } = inquirer;
 	// Get all collections in each DB
 	const collections = await getCollections(backup, mongoose.connection);
 
-	console.log(collections);
-
 	// Prompt for collections to backup
 	const collectionsToBackup: Record<string, string[]> = await prompt(
 		collections.map((db) => ({
