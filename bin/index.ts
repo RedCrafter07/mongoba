@@ -10,6 +10,7 @@ import mongoose from 'mongoose';
 import { createSpinner } from 'nanospinner';
 import path from 'path';
 import encryptFunc from './lib/ecrypt';
+import stringifyJson from './lib/stringifyJson';
 
 const { prompt } = inquirer;
 
@@ -182,9 +183,7 @@ const { prompt } = inquirer;
 
 	const writeSpinner = createSpinner('Writing backup file...');
 
-	let stringifiedJson: string = format
-		? JSON.stringify(documents, null, 2)
-		: JSON.stringify(documents);
+	let stringifiedJson = stringifyJson(documents, format);
 
 	const {
 		encrypt,
