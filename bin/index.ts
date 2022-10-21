@@ -36,7 +36,7 @@ const { prompt } = inquirer;
 
 	const uri = await getURI();
 
-	const spinner = createSpinner('Connecting to MongoDB server...');
+	const spinner = createSpinner('Connecting to MongoDB server...').start();
 
 	try {
 		await mongoose.connect(uri);
@@ -100,7 +100,7 @@ const { prompt } = inquirer;
 		mongoose.connection,
 	);
 
-	const closeSpinner = createSpinner('Closing connection...');
+	const closeSpinner = createSpinner('Closing connection...').start();
 	await mongoose.connection.close();
 	closeSpinner.success({ text: 'Connection closed.' });
 
@@ -122,7 +122,7 @@ const { prompt } = inquirer;
 
 	const format: boolean = formatAny;
 
-	const writeSpinner = createSpinner('Writing backup file...');
+	const writeSpinner = createSpinner('Writing backup file...').start();
 
 	let stringifiedJson = stringifyJson(documents, format);
 
@@ -147,7 +147,7 @@ const { prompt } = inquirer;
 	const resolvedPath = path.resolve(`${backupPath}${encrypt ? '.enc' : ''}`);
 
 	if (encrypt) {
-		const encryptSpinner = createSpinner('Encrypting backup file...');
+		const encryptSpinner = createSpinner('Encrypting backup file...').start();
 
 		stringifiedJson = await encryptFunc(stringifiedJson, encryptionPassword);
 
@@ -196,7 +196,7 @@ const { prompt } = inquirer;
 		gradient(
 			'#4287f5',
 			'#00dd00',
-		)('Backup complete! Thank you for using Mongo-Backup!'),
+		)('Backup complete! Thank you for using Mongoba!'),
 	);
 
 	console.log();
