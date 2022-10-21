@@ -9,6 +9,7 @@ import inquirer from 'inquirer';
 import mongoose from 'mongoose';
 import { createSpinner } from 'nanospinner';
 import path from 'path';
+import getAllDBs from './lib/db/getAll';
 import encryptFunc from './lib/util/ecrypt';
 import stringifyJson from './lib/util/stringifyJson';
 
@@ -82,9 +83,7 @@ const { prompt } = inquirer;
 	spinner.success({ text: 'Connected to MongoDB server!' });
 
 	// Log all DBs
-	const dbs = await (
-		await mongoose.connection.db.admin().listDatabases()
-	).databases;
+	const dbs = await getAllDBs(mongoose.connection);
 
 	console.log();
 
