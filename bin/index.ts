@@ -72,7 +72,7 @@ const { prompt } = inquirer;
 	const uri = `mongodb://${username}:${passwordURI}@${ip}:${port}/${authDB}?authSource=${authDB}`;
 
 	try {
-		await mongoose.connect(uri, {});
+		await mongoose.connect(uri);
 	} catch (err) {
 		spinner.error({ text: 'Failed to connect to MongoDB server!' });
 		console.log(chalk.red(err));
