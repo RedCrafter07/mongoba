@@ -9,8 +9,8 @@ import inquirer from 'inquirer';
 import mongoose from 'mongoose';
 import { createSpinner } from 'nanospinner';
 import path from 'path';
-import encryptFunc from './lib/ecrypt';
-import stringifyJson from './lib/stringifyJson';
+import encryptFunc from './lib/util/ecrypt';
+import stringifyJson from './lib/util/stringifyJson';
 
 const { prompt } = inquirer;
 
