@@ -9,11 +9,11 @@ import inquirer from 'inquirer';
 import mongoose from 'mongoose';
 import { createSpinner } from 'nanospinner';
 import path from 'path';
-import getAllDBs from './lib/db/getAll';
-import getCollections from './lib/db/getCollections';
-import getDocuments from './lib/db/getDocuments';
-import encryptFunc from './lib/util/ecrypt';
-import stringifyJson from './lib/util/stringifyJson';
+import getAllDBs from '../lib/db/getAll';
+import getCollections from '../lib/db/getCollections';
+import getDocuments from '../lib/db/getDocuments';
+import encryptFunc from '../lib/util/ecrypt';
+import stringifyJson from '../lib/util/stringifyJson';
 
 const { prompt } = inquirer;
 
