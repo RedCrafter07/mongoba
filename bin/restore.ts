@@ -104,13 +104,13 @@ const { prompt } = inquirer;
 							.useDb(db.db)
 							.db.collection(collection.collection);
 
-						if (collection.documents.length < 1) return;
-
-						try {
-							await col.insertMany(collection.documents, {
-								ordered: true,
-							});
-						} catch (e) {}
+						if (collection.documents.length > 0) {
+							try {
+								await col.insertMany(collection.documents, {
+									ordered: true,
+								});
+							} catch (e) {}
+						}
 					}),
 				);
 			}),
