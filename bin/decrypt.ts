@@ -2,6 +2,7 @@
 
 import { existsSync } from 'fs';
 import { readFile, writeFile } from 'fs/promises';
+import gradient from 'gradient-string';
 import inquirer from 'inquirer';
 import { createSpinner } from 'nanospinner';
 import path from 'path';
@@ -11,6 +12,8 @@ import stringifyJson from '../lib/util/stringifyJson';
 const { prompt } = inquirer;
 
 (async () => {
+	console.log('Welcome to', gradient('cyan', 'magenta')('Mongoba Decrypt!'));
+
 	const {
 		path: unresolvedFilePath,
 		decryptionKey,
