@@ -9,6 +9,7 @@ import inquirer from 'inquirer';
 import mongoose from 'mongoose';
 import { createSpinner } from 'nanospinner';
 import path from 'path';
+import encryptFunc from './lib/ecrypt';
 
 const { prompt } = inquirer;
 
@@ -206,11 +207,9 @@ const { prompt } = inquirer;
 	const resolvedPath = path.resolve(`${backupPath}${encrypt ? '.enc' : ''}`);
 
 	if (encrypt) {
-		const cryptr = new Cryptr(encryptionPassword);
-
 		const encryptSpinner = createSpinner('Encrypting backup file...');
 
-		stringifiedJson = await cryptr.encrypt(stringifiedJson);
+		stringifiedJson = await encryptFunc(stringifiedJson, encryptionPassword);
 
 		encryptSpinner.success({ text: 'Backup file encrypted!' });
 	}
