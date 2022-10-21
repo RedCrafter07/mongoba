@@ -33,5 +33,10 @@
 	"bin": {
 		"mongoba": "bin/index.js",
 		"mongobad": "bin/decrypt.ts"
-	}
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/RedCrafter07/mongoba.git"
+	},
+	"homepage": "https://github.com/RedCrafter07/mongoba#readme"
 }
