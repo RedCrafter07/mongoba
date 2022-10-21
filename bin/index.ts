@@ -11,6 +11,7 @@ import { createSpinner } from 'nanospinner';
 import path from 'path';
 import getAllDBs from './lib/db/getAll';
 import getCollections from './lib/db/getCollections';
+import getDocuments from './lib/db/getDocuments';
 import encryptFunc from './lib/util/ecrypt';
 import stringifyJson from './lib/util/stringifyJson';
 
@@ -88,7 +89,7 @@ const { prompt } = inquirer;
 
 	console.log();
 
-	const { dbs: dbsToBackup } = await prompt([
+	const { dbs: backup }: { dbs: string[] } = await prompt([
 		{
 			type: 'checkbox',
 			choices: dbs
@@ -104,10 +105,10 @@ const { prompt } = inquirer;
 		},
 	]);
 
-	const backup: string[] = dbsToBackup;
-
 	// Get all collections in each DB
 	const collections = await getCollections(backup, mongoose.connection);
+
+	console.log(collections);
 
 	// Prompt for collections to backup
 	const collectionsToBackup: Record<string, string[]> = await prompt(
@@ -132,24 +133,9 @@ const { prompt } = inquirer;
 	);
 
 	// Get all documents from each collection
-	const documents = (
-		await Promise.all(
-			collectionsToBackupArray.map(async (db) => {
-				const documents = await Promise.all(
-					db.collections.map(async (collection) => {
-						const documents = await mongoose.connection
-							.useDb(db.db)
-							.collection(collection)
-							.find({})
-							.toArray();
-						return { collection, documents };
-					}),
-				);
-				return { db: db.db, collections: documents };
-			}),
-		)
-	).filter(
-		(d) => d.collections.filter((c) => c.documents.length > 0).length > 0,
+	const documents = await getDocuments(
+		collectionsToBackupArray,
+		mongoose.connection,
 	);
 
 	const closeSpinner = createSpinner('Closing connection...');
