@@ -17,18 +17,21 @@
 		"@types/cryptr": "^4.0.1",
 		"@types/figlet": "^1.5.5",
 		"@types/gradient-string": "^1.1.2",
-		"@types/inquirer": "^9.0.2",
+		"@types/inquirer": "8.2.0",
 		"@types/node": "^18.11.3",
-		"chalk": "^5.1.2",
+		"chalk": "4.1.2",
 		"chalk-animation": "^2.0.3",
 		"cryptr": "^6.0.3",
 		"figlet": "^1.5.2",
 		"gradient-string": "^2.0.2",
-		"inquirer": "^9.1.4",
+		"inquirer": "8.2.0",
 		"mongoose": "^6.6.6",
 		"nanospinner": "^1.1.0",
 		"open": "^8.4.0",
 		"typescript": "^4.8.4"
 	},
-	"bin": "bin/index.js"
+	"bin": {
+		"mongoba": "bin/index.js",
+		"mongobad": "bin/decrypt.ts"
+	}
 }
