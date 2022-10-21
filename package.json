@@ -4,7 +4,10 @@
 	"description": "CLI for backing up your MongoDB database",
 	"main": "index.js",
 	"scripts": {
-		"dev": "tsx bin/index.ts"
+		"dev": "tsx bin/index.ts",
+		"dev:d": "tsx bin/decrypt.ts",
+		"build": "tsc",
+		"publish": "npm publish"
 	},
 	"keywords": [],
 	"author": "RedCrafter07",
