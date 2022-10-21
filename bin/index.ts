@@ -10,6 +10,7 @@ import mongoose from 'mongoose';
 import { createSpinner } from 'nanospinner';
 import path from 'path';
 import getAllDBs from './lib/db/getAll';
+import getCollections from './lib/db/getCollections';
 import encryptFunc from './lib/util/ecrypt';
 import stringifyJson from './lib/util/stringifyJson';
 
@@ -106,14 +107,7 @@ const { prompt } = inquirer;
 	const backup: string[] = dbsToBackup;
 
 	// Get all collections in each DB
-	const collections = await Promise.all(
-		backup.map(async (db) => {
-			const collections = await (
-				await mongoose.connection.useDb(db).db.listCollections().toArray()
-			).map((collection) => collection.name);
-			return { db, collections };
-		}),
-	);
+	const collections = await getCollections(backup, mongoose.connection);
 
 	// Prompt for collections to backup
 	const collectionsToBackup: Record<string, string[]> = await prompt(
