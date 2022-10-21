@@ -6,6 +6,7 @@ import { existsSync } from 'fs';
 import { writeFile } from 'fs/promises';
 import gradient from 'gradient-string';
 import inquirer from 'inquirer';
+import moment from 'moment';
 import mongoose from 'mongoose';
 import { createSpinner } from 'nanospinner';
 import path from 'path';
@@ -110,7 +111,7 @@ const { prompt } = inquirer;
 			type: 'input',
 			name: 'path',
 			message: 'Where do you want to save the backup?',
-			default: './backup.json',
+			default: `./backup_${moment().unix()}.json`,
 		},
 		{
 			type: 'confirm',
