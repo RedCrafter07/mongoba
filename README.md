@@ -52,7 +52,27 @@ When you install mongoba, mongobad is automatically available in your terminal. 
 mongobad
 ```
 
-Then, you'll be prompted to enter the path to the backup file and the password you used to encrypt it. Also, some available options will be displayed.
+After executing the command, you'll be prompted to enter the path to the backup file and the password you used to encrypt it. Also, some available options will be displayed.
+
+### Restoring (Mongobar)
+
+As well as the other two commands, mongobar is also available in your terminal. It stands for mongoba restore and it is used to restore the backup file to your MongoDB database. You can use it by running the following command:
+
+```bash
+mongobar
+```
+
+It's self explanatory. It's a simple way to restore a backup file to your MongoDB database.
+
+### Purging (Mongobap)
+
+This command is available too! If you did something wrong and need to delete it, e.g. restored the wrong backup, you can use mongobap.
+
+```bash
+mongobap
+```
+
+And there you go!
 
 ## License
 
