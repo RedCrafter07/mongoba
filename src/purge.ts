@@ -5,9 +5,9 @@ import gradient from 'gradient-string';
 import inquirer from 'inquirer';
 import mongoose from 'mongoose';
 import { createSpinner } from 'nanospinner';
-import getAllDBs from '../lib/db/getAll';
-import getCollections from '../lib/db/getCollections';
-import getURI from '../lib/db/getURI';
+import getAllDBs from './lib/db/getAll';
+import getCollections from './lib/db/getCollections';
+import getURI from './lib/db/getURI';
 
 const { prompt } = inquirer;
 

@@ -10,12 +10,12 @@ import moment from 'moment';
 import mongoose from 'mongoose';
 import { createSpinner } from 'nanospinner';
 import path from 'path';
-import getAllDBs from '../lib/db/getAll';
-import getCollections from '../lib/db/getCollections';
-import getDocuments from '../lib/db/getDocuments';
-import getURI from '../lib/db/getURI';
-import encryptFunc from '../lib/util/ecrypt';
-import stringifyJson from '../lib/util/stringifyJson';
+import getAllDBs from './lib/db/getAll';
+import getCollections from './lib/db/getCollections';
+import getDocuments from './lib/db/getDocuments';
+import getURI from './lib/db/getURI';
+import encryptFunc from './lib/util/ecrypt';
+import stringifyJson from './lib/util/stringifyJson';
 
 const { prompt } = inquirer;
 

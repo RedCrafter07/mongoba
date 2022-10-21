@@ -7,7 +7,7 @@ import inquirer from 'inquirer';
 import mongoose from 'mongoose';
 import { createSpinner } from 'nanospinner';
 import pathLib from 'path';
-import getURI from '../lib/db/getURI';
+import getURI from './lib/db/getURI';
 
 const { prompt } = inquirer;
 

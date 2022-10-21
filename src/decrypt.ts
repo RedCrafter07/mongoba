@@ -6,8 +6,8 @@ import gradient from 'gradient-string';
 import inquirer from 'inquirer';
 import { createSpinner } from 'nanospinner';
 import path from 'path';
-import decrypt from '../lib/util/decrypt';
-import stringifyJson from '../lib/util/stringifyJson';
+import decrypt from './lib/util/decrypt';
+import stringifyJson from './lib/util/stringifyJson';
 
 const { prompt } = inquirer;
 

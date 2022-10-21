@@ -1,6 +1,6 @@
 {
 	"name": "mongoba",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "CLI for backing up your MongoDB database",
 	"main": "index.js",
 	"scripts": {
@@ -36,10 +36,10 @@
 		"typescript": "^4.8.4"
 	},
 	"bin": {
-		"mongoba": "bin/index.js",
-		"mongobad": "bin/decrypt.js",
-		"mongobar": "bin/restore.js",
-		"mongobap": "bin/purge.js"
+		"mongoba": "src/index.js",
+		"mongobad": "src/decrypt.js",
+		"mongobar": "src/restore.js",
+		"mongobap": "src/purge.js"
 	},
 	"repository": {
 		"type": "git",
