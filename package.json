@@ -38,7 +38,8 @@
 	"bin": {
 		"mongoba": "bin/index.js",
 		"mongobad": "bin/decrypt.js",
-		"mongobar": "bin/restore.js"
+		"mongobar": "bin/restore.js",
+		"mongobap": "bin/purge.js"
 	},
 	"repository": {
 		"type": "git",
