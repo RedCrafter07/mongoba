@@ -13,6 +13,7 @@ specifiers:
   figlet: ^1.5.2
   gradient-string: ^2.0.2
   inquirer: 8.2.0
+  moment: ^2.29.4
   mongoose: ^6.6.6
   nanospinner: ^1.1.0
   open: ^8.4.0
@@ -32,6 +33,7 @@ dependencies:
   figlet: 1.5.2
   gradient-string: 2.0.2
   inquirer: 8.2.0
+  moment: 2.29.4
   mongoose: 6.6.6
   nanospinner: 1.1.0
   open: 8.4.0
@@ -851,6 +853,10 @@ packages:
       arrify: 1.0.1
       is-plain-obj: 1.1.0
       kind-of: 6.0.3
+    dev: false
+
+  /moment/2.29.4:
+    resolution: {integrity: sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==}
     dev: false
 
   /mongodb-connection-string-url/2.5.4:
