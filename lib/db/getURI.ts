@@ -4,7 +4,7 @@ const { prompt } = inquirer;
 
 export default async function getURI() {
 	// Prompt for IP, Port, Username, Password, and optionally for authentication database
-	const { ip, port, username, password, authDB } = await prompt([
+	const { ip, port, username, password, authDB, auth } = await prompt([
 		{
 			type: 'input',
 			name: 'ip',
@@ -49,7 +49,9 @@ export default async function getURI() {
 	// Connect to MongoDB server
 	// Make password URI safe
 	const passwordURI = encodeURIComponent(password);
-	const uri = `mongodb://${username}:${passwordURI}@${ip}:${port}/${authDB}?authSource=${authDB}`;
+	const uri = `mongodb://${
+		auth ? `${username}:${passwordURI}@` : ''
+	}${ip}:${port}${auth ? `/${authDB}?authSource=${authDB}` : ''}`;
 
 	return uri;
 }
