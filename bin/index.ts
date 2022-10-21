@@ -12,6 +12,7 @@ import path from 'path';
 import getAllDBs from '../lib/db/getAll';
 import getCollections from '../lib/db/getCollections';
 import getDocuments from '../lib/db/getDocuments';
+import getURI from '../lib/db/getURI';
 import encryptFunc from '../lib/util/ecrypt';
 import stringifyJson from '../lib/util/stringifyJson';
 
@@ -33,46 +34,9 @@ const { prompt } = inquirer;
 	console.log("Let's connect to your MongoDB database first.");
 	console.log('Please authenticate as a user with admin privileges.');
 
-	// Prompt for IP, Port, Username, Password, and optionally for authentication database
-	const { ip, port, username, password, authDB } = await prompt([
-		{
-			type: 'input',
-			name: 'ip',
-			message: 'What is the IP of the MongoDB server?',
-			default: 'localhost',
-		},
-		{
-			type: 'input',
-			name: 'port',
-			message: 'What is the port of the MongoDB server?',
-			default: '27017',
-		},
-		{
-			type: 'input',
-			name: 'username',
-			message: 'What is the username of the MongoDB server?',
-			default: 'admin',
-		},
-		{
-			type: 'password',
-			name: 'password',
-			message: 'What is the password of the MongoDB server?',
-			default: 'admin',
-		},
-		{
-			type: 'input',
-			name: 'authDB',
-			message: 'What is the authentication database of the MongoDB server?',
-			default: 'admin',
-		},
-	]);
+	const uri = await getURI();
 
 	const spinner = createSpinner('Connecting to MongoDB server...');
-
-	// Connect to MongoDB server
-	// Make password URI safe
-	const passwordURI = encodeURIComponent(password);
-	const uri = `mongodb://${username}:${passwordURI}@${ip}:${port}/${authDB}?authSource=${authDB}`;
 
 	try {
 		await mongoose.connect(uri);
