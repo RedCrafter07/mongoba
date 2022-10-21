@@ -80,7 +80,7 @@ export default async function getURI() {
 	]);
 
 	if (method == 'uri') {
-		return promptURI.replace('localhost', '127.0.0.1');
+		return promptURI.replace('localhost', '127.0.0.1') as string;
 	}
 
 	// Connect to MongoDB server
