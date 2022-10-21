@@ -123,8 +123,6 @@ const { prompt } = inquirer;
 
 	const format: boolean = formatAny;
 
-	const writeSpinner = createSpinner('Writing backup file...').start();
-
 	let stringifiedJson = stringifyJson(documents, format);
 
 	const {
@@ -144,6 +142,8 @@ const { prompt } = inquirer;
 			when: (answers) => answers.encrypt,
 		},
 	]);
+
+	const writeSpinner = createSpinner('Writing backup file...').start();
 
 	const resolvedPath = path.resolve(`${backupPath}${encrypt ? '.enc' : ''}`);
 
