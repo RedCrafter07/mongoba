@@ -245,6 +245,14 @@ const { prompt } = inquirer;
 
 	console.log();
 
+	if (encrypt) {
+		console.log(
+			chalk.yellowBright('[!] To decrypt, use the mongobad command.'),
+		);
+	}
+
+	console.log();
+
 	console.log(
 		gradient(
 			'#4287f5',
