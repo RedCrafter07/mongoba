@@ -5,6 +5,7 @@ export default async function fileSelector(
 	withFormat = false,
 	noSearch = false,
 	endings: ('.json' | '.json.enc')[] = ['.json', '.json.enc'],
+	defaultFile: string = './backup.json',
 ) {
 	const { file, format }: { file: string; format: boolean } = await prompt([
 		{
@@ -26,13 +27,14 @@ export default async function fileSelector(
 		{
 			type: 'file',
 			name: 'file',
-			message: 'Select a file',
+			message: 'Where do you want to save the file?',
 			validate: (input: string) => {
 				return endings.some((ending) => input.endsWith(ending))
 					? true
 					: 'Please select a valid file';
 			},
 			when: (answers) => answers.type === 'file' || noSearch,
+			default: defaultFile,
 		},
 		{
 			type: 'list',
