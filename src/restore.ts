@@ -8,6 +8,7 @@ import mongoose from 'mongoose';
 import { createSpinner } from 'nanospinner';
 import pathLib from 'path';
 import getURI from './lib/db/getURI';
+import fileSelector from './lib/util/fileSelector';
 
 const { prompt } = inquirer;
 
@@ -32,14 +33,12 @@ const { prompt } = inquirer;
 
 	connectSpinner.success({ text: 'Connected to MongoDB server!' });
 
-	const { path: unresolvedPath }: { path: string } = await prompt([
-		{
-			name: 'path',
-			type: 'input',
-			default: './backup.json',
-			message: 'Enter the path to the backup file',
-		},
-	]);
+	const { file: unresolvedPath } = await fileSelector(
+		false,
+		false,
+		['.json'],
+		'./backup.json',
+	);
 
 	const path = pathLib.resolve(unresolvedPath);
 

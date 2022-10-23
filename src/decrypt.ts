@@ -16,7 +16,7 @@ const { prompt } = inquirer;
 	console.log('Welcome to', gradient('cyan', 'magenta')('Mongoba Decrypt!'));
 
 	const { file: unresolvedFilePath } = await fileSelector(false, false, [
-		'.json',
+		'.json.enc',
 	]);
 
 	const {
