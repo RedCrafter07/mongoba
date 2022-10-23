@@ -107,7 +107,12 @@ const { prompt } = inquirer;
 	closeSpinner.success({ text: 'Connection closed.' });
 
 	// Prompt for file path
-	const { file: backupPath, format } = await fileSelector(true, true);
+	const { file: backupPath, format } = await fileSelector(
+		true,
+		true,
+		['.json'],
+		`./backup_${moment().unix()}.json`,
+	);
 
 	let stringifiedJson = stringifyJson(documents, format);
 
