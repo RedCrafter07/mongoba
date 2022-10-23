@@ -127,7 +127,7 @@ const { prompt } = inquirer;
 			default: false,
 		},
 		{
-			type: 'password',
+			type: 'input',
 			name: 'password',
 			message: 'What is the password you want to encrypt the backup file with?',
 			when: (answers) => answers.encrypt,
