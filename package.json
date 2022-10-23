@@ -4,10 +4,11 @@
 	"description": "CLI for backing up your MongoDB database",
 	"main": "index.js",
 	"scripts": {
-		"dev": "tsx bin/index.ts",
-		"dev:d": "tsx bin/decrypt.ts",
-		"dev:r": "tsx bin/restore.ts",
-		"dev:p": "tsx bin/purge.ts",
+		"dev": "tsx src/index.ts",
+		"dev:d": "tsx src/decrypt.ts",
+		"dev:r": "tsx src/restore.ts",
+		"dev:p": "tsx src/purge.ts",
+		"dev:s": "tsx src/schedule.ts",
 		"build": "tsc"
 	},
 	"keywords": [],
