@@ -1,6 +1,6 @@
 {
 	"name": "mongoba",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "CLI for backing up your MongoDB database",
 	"main": "index.js",
 	"scripts": {
