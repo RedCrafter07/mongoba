@@ -15,6 +15,7 @@ import getCollections from './lib/db/getCollections';
 import getDocuments from './lib/db/getDocuments';
 import getURI from './lib/db/getURI';
 import encryptFunc from './lib/util/ecrypt';
+import fileSelector from './lib/util/fileSelector';
 import stringifyJson from './lib/util/stringifyJson';
 
 const { prompt } = inquirer;
@@ -106,22 +107,7 @@ const { prompt } = inquirer;
 	closeSpinner.success({ text: 'Connection closed.' });
 
 	// Prompt for file path
-	const { path: backupPath, format: formatAny } = await prompt([
-		{
-			type: 'input',
-			name: 'path',
-			message: 'Where do you want to save the backup?',
-			default: `./backup_${moment().unix()}.json`,
-		},
-		{
-			type: 'confirm',
-			name: 'formatted',
-			message: 'Do you want to format the backup file?',
-			default: false,
-		},
-	]);
-
-	const format: boolean = formatAny;
+	const { file: backupPath, format } = await fileSelector(true, true);
 
 	let stringifiedJson = stringifyJson(documents, format);
 

@@ -7,6 +7,7 @@ import inquirer from 'inquirer';
 import { createSpinner } from 'nanospinner';
 import path from 'path';
 import decrypt from './lib/util/decrypt';
+import fileSelector from './lib/util/fileSelector';
 import stringifyJson from './lib/util/stringifyJson';
 
 const { prompt } = inquirer;
@@ -14,23 +15,19 @@ const { prompt } = inquirer;
 (async () => {
 	console.log('Welcome to', gradient('cyan', 'magenta')('Mongoba Decrypt!'));
 
+	const { file: unresolvedFilePath } = await fileSelector(false, false, [
+		'.json',
+	]);
+
 	const {
-		path: unresolvedFilePath,
 		decryptionKey,
 		outputPath: unresolvedOutputFilePath,
 		format,
 	}: {
-		path: string;
 		decryptionKey: string;
 		outputPath: string;
 		format: boolean;
 	} = await prompt([
-		{
-			type: 'input',
-			name: 'path',
-			message: 'What is the path to the file you want to decrypt?',
-			default: './backup.json.enc',
-		},
 		{
 			type: 'input',
 			name: 'decryptionKey',
