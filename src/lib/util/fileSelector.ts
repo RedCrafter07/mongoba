@@ -1,4 +1,4 @@
-import { readdir } from 'fs/promises';
+import { readdir, stat } from 'fs/promises';
 import { prompt } from 'inquirer';
 
 export default async function fileSelector(
@@ -40,11 +40,24 @@ export default async function fileSelector(
 			type: 'list',
 			name: 'file',
 			choices: (
-				await readdir('./', {
-					withFileTypes: true,
-				})
+				await Promise.all(
+					(
+						await readdir('./', {
+							withFileTypes: true,
+						})
+					).map(async (f) => {
+						const stats = await stat(f.name);
+						return {
+							name: f.name,
+							createdAt: stats.birthtime,
+						};
+					}),
+				)
 			)
-				.map((d) => d.name)
+				.sort((a, b) =>
+					b.createdAt.getTime() - a.createdAt.getTime() > 0 ? 1 : -1,
+				)
+				.map((f) => f.name)
 				.filter((d) => endings.some((ending) => d.endsWith(ending))),
 			when: (answers) => answers.type === 'search' && !noSearch,
 		},
