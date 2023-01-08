@@ -105,9 +105,15 @@ const { prompt } = inquirer;
 
 						if (collection.documents.length > 0) {
 							try {
-								await col.insertMany(collection.documents, {
-									ordered: true,
-								});
+								await col.insertMany(
+									collection.documents.map((d) => ({
+										...d,
+										_id: new mongoose.Types.ObjectId(d._id),
+									})),
+									{
+										ordered: true,
+									},
+								);
 							} catch (e) {}
 						}
 					}),
